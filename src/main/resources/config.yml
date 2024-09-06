@@ -1,0 +1,100 @@
+file-version: 1
+
+# ---
+# The locale code of the language that should be used for
+# messages sent to in-game users. The logging will still
+# remain english.
+#
+# Built in languages:
+#   en - English
+#
+# Missing your language?
+#   You can also add your own custom language file by copying an
+#   already existing file within the translations folder and giving
+#   it a unique name. After that you can use the name of your file
+#   as a config value here.
+language: en
+
+# ---
+# Settings for running script files
+scripts:
+
+  # The program and parameters used to run scripts
+  #
+  # (scripts are ran with the working directory set to the folder containing the script)
+  #
+  # Use: %scriptFile% as a placeholder for the name (+extension) of the script file
+  execution: cmd.exe /c %scriptFile%
+
+  # Whether the output should be redirected to the Velocity server output
+  # Can be useful for debugging when changing the program / params config values
+  use-output-redirect: false
+
+# ---
+# Configuration for how to handle server startup
+server-startup:
+
+  # This pattern is used to select the correct startup script for
+  # a given server when attempting to start it.
+  # Use: %server% as a placeholder for the server name
+  script-pattern: start-%server%.bat
+
+  # The amount of seconds to wait between every check to see if the
+  # server has come online (when running a server startup script)
+  polling-delay: 5
+
+  # The maximum amount of time (in seconds) to wait for a server to
+  # come online after running the startup script. This value is overwritten
+  # by any values specified in the server-specific-timeouts.
+  global-timeout: 60
+
+  # Specify server startup processes here that should use a
+  # different timeout from the global-timeout defined above.
+  #
+  # This can be used for example when one of your servers has
+  # a significantly longer startup time because of plugins/mods.
+  server-specific-timeouts:
+    example-server: 360
+
+# ---
+# Permissions documentation
+#
+# servercontrol.base
+#   The basic permission to do anything with the plugin, if
+#   a player doesn't have this, they cannot use /sc.
+#
+# servercontrol.info
+#   Permission to run the /sc info command
+#
+# servercontrol.list
+#   Permission to run the /sc list command
+#
+# servercontrol.start
+#   Basic permission needed to start any server with /sc start.
+#   If a player has this permission, they cannot yet start a
+#   server, they will also need the permission for the specific
+#   server itself. (see below)
+#
+# servercontrol.start.<server>
+#   Allows the player to start the given server with /sc start <server>
+#
+# servercontrol.join
+#   Basic permission needed to join any server with /sc join as well
+#   as permission to use /sc cancel_join. If a player has this
+#   permission, they cannot yet start a server, they will also
+#   need the permission for the specific server itself. (see below)
+#
+# servercontrol.join.<server>
+#   Allows the player to join the given server with /sc start <server>
+#
+# servercontrol.run_as
+#   Permission to run the /sc run_as command. The permission check for
+#   the command that is executed is handled normally as if the original
+#   user of the run_as command (so not the player the command is run for)
+#   would've used the command. This means that a player with join permissions
+#   for a specific server can make a player without those permissions still
+#   join that server if they have the run_as permission.
+#
+# Set this value to false if you don't want to use the permissions system
+# NOTE THAT THIS WILL GIVE EVERYONE THE ABILITY TO RUN ALL THE SERVERCONTROL COMMANDS!!
+use-permissions: true

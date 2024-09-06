@@ -1,0 +1,97 @@
+{
+  "connecting_to_server": "<green>Connecting you to '%server%'...</green>",
+  "commands": {
+    "requires_player_source": "<red>Only players are allowed to use that command</red>",
+    "base": {
+      "no_sub_command": "<gray>Running <aqua>%plugin%</aqua> v<aqua>%version%</aqua> by <aqua>%authors%</aqua>. Use <click:suggest_command:'/sc help'>/<aqua>sc help</aqua></click> for a help menu</gray>",
+      "unknown_sub_command": "<red>Unknown subcommand: %command%</red>"
+    },
+    "help": {
+      "invalid_page_or_command_arg": "<red>Invalid page number or command: '%arg%'</red>",
+      "invalid_page_arg": "<red>Invalid page number: '%arg%'</red>"
+    },
+    "list": {
+      "server_list": "<gray>Servers registered on network: %servers%</gray>"
+    },
+    "info": {
+      "missing_server_arg": "<red>Please specify the server you want info about. Usage: /sc info [server]",
+      "server_not_found": "<red>Could not find a server with the name: %server%</red>"
+    },
+    "start": {
+      "missing_server_arg": "<red>Please specify the server you want to start. Usage: /sc start [server]",
+      "server_not_found": "<red>Could not find a server with the name: %server%</red>",
+      "server_already_online": "<gold>The server '%server%' is already running.</gold>"
+    },
+    "join": {
+      "missing_server_arg": "<red>Please specify the server you want to start. Usage: /sc start [server]",
+      "server_not_found": "<red>Could not find a server with the name: %server%</red>"
+    },
+    "cancel_join": {
+      "cancelled_delayed_join": "<green>Cancelled your join. You won't be automatically redirected.</green>"
+    },
+    "run_as": {
+      "missing_player_arg": "<red>Please specify the user you want to use as executor. Usage /sc run_as [player] [command]</red>",
+      "player_not_found": "<red>Could not find a player with the name: %player%</red>",
+      "success": "<green>Running command '%command%' as player '%player%'...</green>"
+    }
+  },
+  "server_startup": {
+    "starting": "<gold><i>Server '%server%' is booting up...</i></gold>",
+    "added_to_join_list": "<gray>Once the server has started, you will be automatically redirected! <click:run_command:'/sc cancel_join'><i><u>Click here to cancel</u></i></click></gray>",
+    "no_script_defined": "<red>Cannot start server '%server%'! No startup script defined for the server.</red>",
+    "unknown_error": "<red>Something went wrong while trying to start server '%server%'!</red>\n<gray><i>Please contact an administrator if this keeps happening.</i></gray>",
+    "script_result": {
+      "success": "<green>The server '%server%' has started! You are now able to connect to it.</green>",
+      "unknown_error": "<red>Something went wrong while trying to start server '%server%'!</red>\n<gray><i>Please contact an administrator if this keeps happening.</i></gray>"
+    }
+  },
+  "help_menu": {
+    "click_for_info": "Click on a command to get more info.",
+    "command_descriptions": {
+      "help": {
+        "main": "Shows either the main help menu or the help menu for a specific command.",
+        "arguments": {
+          "page_or_command": "Either the page of the main menu to display, or the command for which to display a help menu.",
+          "page": "The page of the command help menu to display. (only used if a command was supplied in the previous argument)"
+        }
+      },
+      "list": {
+        "main": "Returns a list of all the servers registered on the network."
+      },
+      "info": {
+        "main": "Returns some general info about a server such as online state, if it has a startup script defined, etc.",
+        "arguments": {
+          "server": "The server for which to give information."
+        }
+      },
+      "start": {
+        "main": "Attempts to start a server using the predefined startup script (see config.yml). The player running this command will be notified when the boot-up process has either failed or succeeded.",
+        "arguments": {
+          "server": "The server for which to run the startup script."
+        }
+      },
+      "join": {
+        "main": "Tries to redirect the player to the provided server. If the server appears offline, it attempts to start the server using the predefined startup script (see config.yml). The player running this command will be automatically redirected after the boot-up process has succeeded.",
+        "arguments": {
+          "server": "The server to join."
+        }
+      },
+      "cancel_join": {
+        "main": "Cancels a pending join action that may be in place after using the /sc join command. After using this command, the player will not be automatically redirected after the server has started up."
+      },
+      "run_as": {
+        "main": "Runs any ServerControl command as if it would've been run by another player. However, the handling of permissions will be done as if the player running the run_as command was the one who executed the command. This makes it possible for example, to run the /sc join command for a player that would normally not have permission to use the command.",
+        "arguments": {
+          "player": "The player for whom to run the command.",
+          "command": "The ServerControl command to run."
+        }
+      }
+    }
+  },
+  "common": {
+    "command": "command",
+    "usage": "usage",
+    "description": "description",
+    "argument": "argument"
+  }
+}
