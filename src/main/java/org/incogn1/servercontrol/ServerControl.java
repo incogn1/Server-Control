@@ -30,13 +30,13 @@ import java.util.*;
 @Plugin(
         id = "servercontrol",
         name = "ServerControl",
-        version = "1.0-SNAPSHOT",
+        version = "1.0.0-SNAPSHOT",
         authors = {"Incogn1"}
 )
 public class ServerControl {
 
     public static String PLUGIN_NAME = "ServerControl";
-    public static String PLUGIN_VERSION = "1.0-SNAPSHOT";
+    public static String PLUGIN_VERSION = "1.0.0-SNAPSHOT";
     public static String[] PLUGIN_AUTHORS = {"Incogn1"};
 
     public static String CONFIG_FILE = "config.yml";
