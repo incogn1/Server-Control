@@ -38,6 +38,10 @@
               <pattern>dev.devjvokep.boostedyaml</pattern>
               <shadedPattern>org.incogn1.servercontrol.libs</shadedPattern>
             </relocation>
+            <relocation>
+              <pattern>org.bstats</pattern>
+              <shadedPattern>org.incogn1.servercontrol</shadedPattern>
+            </relocation>
           </relocations>
         </configuration>
       </plugin>

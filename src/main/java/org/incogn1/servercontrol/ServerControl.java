@@ -16,6 +16,7 @@ import dev.dejvokep.boostedyaml.settings.dumper.DumperSettings;
 import dev.dejvokep.boostedyaml.settings.general.GeneralSettings;
 import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
+import org.bstats.velocity.Metrics;
 import org.incogn1.servercontrol.commands.BaseCommand;
 import org.incogn1.servercontrol.resources.ResourceSync;
 import org.incogn1.servercontrol.scripts.ScriptManager;
@@ -31,6 +32,7 @@ import java.util.*;
         id = "servercontrol",
         name = "ServerControl",
         version = "1.0-SNAPSHOT",
+        url = "https://github.com/incogn1/Server-Control",
         authors = {"Incogn1"}
 )
 public class ServerControl {
@@ -51,11 +53,15 @@ public class ServerControl {
     public static TranslationsManager translationsManager;
     public static ServerManager serverManager;
 
+    private final Metrics.Factory metricsFactory;
+    private static int BSTATS_PLUGIN_ID = 23295;
+
     @Inject
-    public ServerControl(ProxyServer proxy, Logger logger, @DataDirectory Path dataDirectory) {
+    public ServerControl(ProxyServer proxy, Logger logger, Metrics.Factory metricsFactory, @DataDirectory Path dataDirectory) {
         ServerControl.logger = logger;
         ServerControl.proxy = proxy;
         ServerControl.dataDirectory = dataDirectory;
+        this.metricsFactory = metricsFactory;
 
         // Sync resources
         logger.debug("Syncing resources");
@@ -126,6 +132,9 @@ public class ServerControl {
         commandManager.register(commandMeta, new BaseCommand());
 
         logger.info("ServerControl plugin initialized!");
+
+        // Initialize bStats metrics
+        metricsFactory.make(this, BSTATS_PLUGIN_ID);
     }
 
     private void shutDown() {
